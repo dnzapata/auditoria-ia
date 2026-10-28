@@ -1,0 +1,15 @@
+{
+  "name": "auditoria-ia",
+  "description": "Auditoría pre-lanzamiento en español para apps hechas con IA (vibe coding).",
+  "owner": {
+    "name": "Daniel Zapata",
+    "email": "dnzapata@zynaptic.tech"
+  },
+  "plugins": [
+    {
+      "name": "auditoria-ia",
+      "source": "./",
+      "description": "Revisión de seguridad y preparación para producción de apps hechas con IA, en español."
+    }
+  ]
+}
