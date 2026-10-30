@@ -66,6 +66,20 @@ Un informe en el chat con:
 Las únicas herramientas que usa sin pedir permiso son de lectura (`Read`, `Grep`, `Glob`). Cualquier
 comando (por ejemplo `git log`) te pide autorización y explica qué hace.
 
+### Por qué lee archivos con claves
+
+Para detectar claves expuestas, la skill tiene que mirar los lugares donde suelen estar: `.env`,
+`local.properties`, `build.gradle`, archivos de configuración de Supabase y Firebase. Eso es todo lo
+que hace con ellas:
+
+- las lee **solo dentro del proyecto que tú le indicas**, nunca credenciales de tu usuario o de tu
+  sistema (no toca `~/.ssh`, `~/.aws`, el llavero, ni las sesiones de `gh`, `npm` o `gcloud`);
+- solo decide **qué tipo de clave es y dónde termina** (por ejemplo, si un JWT de Supabase es la clave
+  pública `anon` o la secreta `service_role`, leyendo únicamente la parte que dice el rol);
+- **no las usa** para conectarse a nada, **no las envía** a ningún servicio y **no tiene ningún paso que
+  transmita datos**: no hay servidores MCP, ni scripts, ni llamadas de red;
+- en el informe las muestra **ocultas** (solo los primeros caracteres que identifican el tipo).
+
 ## Instalación
 
 ### Opción 1: como plugin (recomendada)
@@ -88,35 +102,21 @@ Para recibir versiones nuevas: `claude plugin update auditoria-ia@auditoria-ia`.
 
 ### Opción 2: copiar la skill a mano
 
-Windows (PowerShell):
-
-```powershell
-git clone https://github.com/dnzapata/auditoria-ia.git
-New-Item -ItemType Directory -Force "$HOME\.claude\skills" | Out-Null
-Copy-Item -Recurse auditoria-ia\skills\auditoria-prelanzamiento "$HOME\.claude\skills\"
-```
-
-macOS / Linux:
-
-```bash
-git clone https://github.com/dnzapata/auditoria-ia.git
-mkdir -p ~/.claude/skills && cp -r auditoria-ia/skills/auditoria-prelanzamiento ~/.claude/skills/
-```
-
-Reinicia Claude Code después de instalar.
+Descarga la carpeta `skills/auditoria-prelanzamiento` de este repositorio y cópiala dentro de la
+carpeta de skills de tu usuario (`~/.claude/skills/` en macOS y Linux, `%USERPROFILE%\.claude\skills\`
+en Windows). Reinicia Claude Code después de copiarla. En ese caso el comando es
+`/auditoria-prelanzamiento`.
 
 ## Uso
 
 Abre Claude Code en la carpeta de tu proyecto y escribe:
 
 ```text
-/auditoria-prelanzamiento
+/auditoria-ia:auditoria-prelanzamiento
 ```
 
-(si la instalaste como plugin, el comando es `/auditoria-ia:auditoria-prelanzamiento`)
-
 o simplemente: *"revisa si mi app está lista para publicar"*. También puedes indicar otra carpeta:
-`/auditoria-prelanzamiento C:\proyectos\mi-app`.
+`/auditoria-ia:auditoria-prelanzamiento C:\proyectos\mi-app`.
 
 Una revisión completa tarda unos minutos según el tamaño del proyecto.
 
