@@ -99,15 +99,15 @@ clave de subida). **Crítico** si están en git con remoto, **alto** en otro cas
 ### Pedírselo a Claude Code (ejemplo)
 
 ```text
-En este proyecto la clave de OpenAI está en el cliente (src/lib/ai.ts, variable VITE_OPENAI_KEY) y
+En este proyecto la clave del proveedor de IA está en el código del cliente (src/lib/ai.ts) y
 cualquiera puede sacarla del navegador. Ya la revoqué y tengo una nueva.
-1. Crea una Supabase Edge Function llamada "chat" que reciba el mensaje del usuario, verifique que la
-   petición trae un usuario logueado válido (Authorization: Bearer), y llame a OpenAI con la clave
-   leída de los secretos de Supabase (Deno.env.get("OPENAI_API_KEY")). Fija el modelo y max_tokens en
-   el servidor; no los aceptes desde el cliente.
-2. Cambia src/lib/ai.ts para que llame a esa función con supabase.functions.invoke en lugar de a
-   OpenAI directamente, y elimina VITE_OPENAI_KEY de todo el proyecto.
-3. Dime el comando exacto para cargar el secreto con supabase secrets set y para desplegar la función.
+1. Mueve la llamada al proveedor de IA a una función de servidor (por ejemplo una Supabase Edge
+   Function llamada "chat") que verifique que la petición viene de un usuario logueado válido. La
+   clave nueva tiene que quedar guardada como secreto del servidor, nunca en el código ni en la app.
+   Fija el modelo y el límite de tokens en el servidor; no los aceptes desde el cliente.
+2. Cambia src/lib/ai.ts para que llame a esa función en lugar de al proveedor directamente, y elimina
+   la clave vieja de todo el proyecto.
+3. Explícame paso a paso cómo cargo yo el secreto en el panel del servidor y cómo despliego la función.
 No cambies nada más.
 ```
 

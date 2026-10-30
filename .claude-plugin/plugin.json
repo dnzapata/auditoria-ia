@@ -1,7 +1,7 @@
 {
   "name": "auditoria-ia",
   "displayName": "Auditoría pre-lanzamiento",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Revisión de seguridad y preparación para producción de apps hechas con IA, en español. Solo lee; no modifica nada ni envía datos a terceros.",
   "author": {
     "name": "Daniel Zapata",
