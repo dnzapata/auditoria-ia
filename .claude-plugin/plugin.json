@@ -1,7 +1,7 @@
 {
   "name": "auditoria-ia",
   "displayName": "Auditoría pre-lanzamiento",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Revisión de seguridad y preparación para producción de apps hechas con IA, en español. Solo lee; no modifica nada ni envía datos a terceros.",
   "author": {
     "name": "Daniel Zapata",
@@ -10,5 +10,10 @@
   "homepage": "https://github.com/dnzapata/auditoria-ia",
   "repository": "https://github.com/dnzapata/auditoria-ia",
   "license": "MIT",
-  "keywords": ["seguridad", "auditoria", "supabase", "firebase", "vibe-coding", "google-play", "espanol"]
+  "keywords": ["seguridad", "auditoria", "supabase", "firebase", "vibe-coding", "google-play", "espanol"],
+  "icon": "./.claude-plugin/icon.png",
+  "documentationUrl": "https://github.com/dnzapata/auditoria-ia#readme",
+  "supportUrl": "https://github.com/dnzapata/auditoria-ia/issues",
+  "privacyPolicyUrl": "https://github.com/dnzapata/auditoria-ia/blob/main/PRIVACIDAD.md",
+  "termsOfServiceUrl": "https://github.com/dnzapata/auditoria-ia/blob/main/TERMINOS.md"
 }

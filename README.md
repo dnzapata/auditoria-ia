@@ -141,3 +141,6 @@ corregir.
 ## Licencia
 
 [MIT](LICENSE). Úsala, modifícala y compártela. Sin garantías: ver la licencia.
+
+[Política de privacidad](PRIVACIDAD.md) · [Términos de uso](TERMINOS.md) ·
+[Soporte](https://github.com/dnzapata/auditoria-ia/issues)
